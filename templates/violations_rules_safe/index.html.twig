@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Нарушения правил техники безопасности{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+    <h1>Нарушения правил техники безопасности</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата нарушения</th>
+                <th>Описание</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for violations_rules_safe in violations_rules_saves %}
+            <tr>
+                <td>{{ violations_rules_safe.id }}</td>
+                <td>{{ violations_rules_safe.dateViolation ? violations_rules_safe.dateViolation|date('Y-m-d') : '' }}</td>
+                <td>{{ violations_rules_safe.description }}</td>
+                <td>
+                    <a href="{{ path('app_violations_rules_safe_show', {'id': violations_rules_safe.id}) }}">Показать</a>
+                    <a href="{{ path('app_violations_rules_safe_edit', {'id': violations_rules_safe.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_violations_rules_safe_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

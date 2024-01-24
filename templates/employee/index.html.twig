@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список сотрудников{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+
+    <h1>Список сотрудников</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Дата рождения</th>
+                <th>Дата начала работы</th>
+                <th>Номер телефона</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.surname }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.midName }}</td>
+                <td>{{ employee.birthDate ? employee.birthDate|date('Y-m-d') : '' }}</td>
+                <td>{{ employee.startWorkDate ? employee.startWorkDate|date('Y-m-d') : '' }}</td>
+                <td>{{ employee.numberPhone }}</td>
+                <td>
+                    <a href="{{ path('app_employee_show', {'id': employee.id}) }}">Показать</a>
+                    <a href="{{ path('app_employee_edit', {'id': employee.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

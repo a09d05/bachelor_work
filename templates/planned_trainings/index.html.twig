@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Запланированные курсы{% endblock %}
+
+{% block body %}
+    <style> a {text-decoration: none;} </style>
+    <h1>Запланированные курсы</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата начала</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for planned_training in planned_trainings %}
+            <tr>
+                <td>{{ planned_training.id }}</td>
+                <td>{{ planned_training.dateTrain ? planned_training.dateTrain|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_planned_trainings_show', {'id': planned_training.id}) }}">Показать</a>
+                    <a href="{{ path('app_planned_trainings_edit', {'id': planned_training.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_planned_trainings_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

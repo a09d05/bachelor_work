@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый отдел{% endblock %}
+
+{% block body %}
+    <h1>Создать новый отдел</h1>
+
+    {{ include('depts/_form.html.twig') }}
+
+    <a href="{{ path('app_depts_index') }}">Вернуться к списку</a>
+{% endblock %}

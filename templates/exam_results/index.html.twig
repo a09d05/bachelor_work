@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Результаты экзаменов{% endblock %}
+
+{% block body %}
+    <h1>Результаты экзаменов</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата тестирования</th>
+                <th>Результат</th>
+                <th>Пройден?</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exam_result in exam_results %}
+            <tr>
+                <td>{{ exam_result.id }}</td>
+                <td>{{ exam_result.dateExam ? exam_result.dateExam|date('Y-m-d') : '' }}</td>
+                <td>{{ exam_result.result }}</td>
+                <td>{{ exam_result.isComplete ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_exam_results_show', {'id': exam_result.id}) }}">Показать</a>
+                    <a href="{{ path('app_exam_results_edit', {'id': exam_result.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exam_results_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

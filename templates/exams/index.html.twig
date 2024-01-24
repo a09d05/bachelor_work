@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Тестирования{% endblock %}
+
+{% block body %}
+    <style> a {text-decoration:none;} </style>
+
+    <h1>Тестирования</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Вопрос</th>
+                <th>Ответы</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for exam in exams %}
+            <tr>
+                <td>{{ exam.id }}</td>
+                <td>{{ exam.question }}</td>
+                <td>{{ exam.answer }}</td>
+                <td>
+                    <a href="{{ path('app_exams_show', {'id': exam.id}) }}">Показать</a>
+                    <a href="{{ path('app_exams_edit', {'id': exam.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_exams_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

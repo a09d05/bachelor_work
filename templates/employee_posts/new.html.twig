@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новая должность{% endblock %}
+
+{% block body %}
+    <h1>Создать новую должность</h1>
+
+    {{ include('employee_posts/_form.html.twig') }}
+
+    <a href="{{ path('app_employee_posts_index') }}">Вернуться к списку</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список курсов{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+    <h1>Список курсов</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Длительность (час)</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for course in courses %}
+            <tr>
+                <td>{{ course.id }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.duration }}</td>
+                <td>
+                    <a href="{{ path('app_courses_show', {'id': course.id}) }}">Показать</a>
+                    <a href="{{ path('app_courses_edit', {'id': course.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_courses_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

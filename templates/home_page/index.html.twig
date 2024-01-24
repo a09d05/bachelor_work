@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block body %}
+<style>
+    h1 {margin-left: 40px}
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<h1>Главная страница</h1>
+<br>
+<div class="wrapper">
+    <ul style="list-style-type: none;">
+        <li><a href={{ path('app_employee_index') }}>Сотрудники</a></li>
+        <li><a href={{ path('app_employee_posts_index') }}>Должности сотрудников</a></li>
+        <li><a href={{ path('app_depts_index') }}>Отделы</a></li>
+        <li><a href={{ path('app_courses_index') }}>Курсы</a></li>
+        <li><a href={{ path('app_planned_trainings_index') }}>Запланированные курсы</a></li>
+        <li><a href={{ path('app_exams_index') }}>Экзамены</a></li>
+        <li><a href={{ path('app_exam_results_index') }}>Результаты экзаменов</a></li>
+        <li><a href={{ path('app_failed_employees_index') }}>Несдавшие сотрудники</a></li>
+        <li><a href={{ path('app_violations_rules_safe_index') }}>Нарушения правил охраны труда</a></li>
+        <li><a href={{ path('app_check_requirements_work_index') }}>Проверки отделов на соответствие требованиям ОТ</a></li> 
+    </ul>
+</div>
+{% endblock %}

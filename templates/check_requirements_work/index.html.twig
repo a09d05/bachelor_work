@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Проверка отделов на соответствие требованиям ОТ{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+    <h1>Проверка отделов на соответствие требованиям ОТ</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Планируемая дата проверки</th>
+                <th>Фактическая дата проверки</th>
+                <th>Результат</th>
+                <th>Комментарии</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for check_requirements_work in check_requirements_works %}
+            <tr>
+                <td>{{ check_requirements_work.id }}</td>
+                <td>{{ check_requirements_work.plannedCheckDate ? check_requirements_work.plannedCheckDate|date('Y-m-d') : '' }}</td>
+                <td>{{ check_requirements_work.factCheckDate ? check_requirements_work.factCheckDate|date('Y-m-d') : '' }}</td>
+                <td>{{ check_requirements_work.result }}</td>
+                <td>{{ check_requirements_work.comments }}</td>
+                <td>
+                    <a href="{{ path('app_check_requirements_work_show', {'id': check_requirements_work.id}) }}">Показать</a>
+                    <a href="{{ path('app_check_requirements_work_edit', {'id': check_requirements_work.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_check_requirements_work_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

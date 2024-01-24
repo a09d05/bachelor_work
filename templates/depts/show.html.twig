@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список отделов{% endblock %}
+
+{% block body %}
+    <h1>Список отделов</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ dept.id }}</td>
+            </tr>
+            <tr>
+                <th>Название отдела</th>
+                <td>{{ dept.deptName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_depts_index') }}">Вернуться к списку</a>
+
+    <a href="{{ path('app_depts_edit', {'id': dept.id}) }}">Отредактировать</a>
+
+    {{ include('depts/_delete_form.html.twig') }}
+{% endblock %}

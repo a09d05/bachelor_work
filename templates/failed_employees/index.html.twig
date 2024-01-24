@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Несдавшие сотрудники{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+    <h1>Несдавшие сотрудники</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Дата проваленного экзамена</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for failed_employee in failed_employees %}
+            <tr>
+                <td>{{ failed_employee.id }}</td>
+                <td>{{ failed_employee.dateFail ? failed_employee.dateFail|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_failed_employees_show', {'id': failed_employee.id}) }}">Показать</a>
+                    <a href="{{ path('app_failed_employees_edit', {'id': failed_employee.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записи не найдены</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_failed_employees_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}

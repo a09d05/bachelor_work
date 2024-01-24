@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ViolationsRulesSafe{% endblock %}
+
+{% block body %}
+    <h1>Edit ViolationsRulesSafe</h1>
+
+    {{ include('violations_rules_safe/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_violations_rules_safe_index') }}">back to list</a>
+
+    {{ include('violations_rules_safe/_delete_form.html.twig') }}
+{% endblock %}

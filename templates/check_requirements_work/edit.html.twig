@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редактирование записи о проверке{% endblock %}
+
+{% block body %}
+    <h1>Редактирование записи о проверке</h1>
+
+    {{ include('check_requirements_work/_form.html.twig', {'button_label': 'Обновить'}) }}
+    {{ include('check_requirements_work/_delete_form.html.twig') }}
+
+    <a href="{{ path('app_check_requirements_work_index') }}">Вернуться к списку</a>
+
+{% endblock %}

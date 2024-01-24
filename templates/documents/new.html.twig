@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Новый документ{% endblock %}
+
+{% block body %}
+    <h1>Создать новый документ</h1>
+
+    {{ include('documents/_form.html.twig') }}
+
+    <a href="{{ path('app_documents_index') }}">Вернуться к списку</a>
+{% endblock %}

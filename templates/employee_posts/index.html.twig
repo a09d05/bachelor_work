@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список должностей{% endblock %}
+
+{% block body %}
+    <style> a { text-decoration: none; } </style>
+    <h1>Список должностей</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Наименование должности</th>
+                <th>Возможные действия</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee_post in employee_posts %}
+            <tr>
+                <td>{{ employee_post.id }}</td>
+                <td>{{ employee_post.namePost }}</td>
+                <td>
+                    <a href="{{ path('app_employee_posts_show', {'id': employee_post.id}) }}">Показать</a>
+                    <a href="{{ path('app_employee_posts_edit', {'id': employee_post.id}) }}">Редактировать</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Записей не найдено</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_posts_new') }}">Создать новую запись</a>
+    <a href="{{ path('app_home_page') }}">Вернуться на главную</a>
+{% endblock %}
