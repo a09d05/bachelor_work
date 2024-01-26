@@ -1,38 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}CheckRequirementsWork{% endblock %}
+{% block title %}Проверка ОТ{% endblock %}
 
 {% block body %}
-    <h1>CheckRequirementsWork</h1>
+    <h1>Проверка ОТ</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>№</th>
                 <td>{{ check_requirements_work.id }}</td>
             </tr>
             <tr>
-                <th>PlannedCheckDate</th>
+                <th>Планируемая дата проверки</th>
                 <td>{{ check_requirements_work.plannedCheckDate ? check_requirements_work.plannedCheckDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>FactCheckDate</th>
+                <th>Фактическая дата проверки</th>
                 <td>{{ check_requirements_work.factCheckDate ? check_requirements_work.factCheckDate|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Result</th>
+                <th>Результат</th>
                 <td>{{ check_requirements_work.result }}</td>
             </tr>
             <tr>
-                <th>Comments</th>
+                <th>Комментарий</th>
                 <td>{{ check_requirements_work.comments }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_check_requirements_work_index') }}">back to list</a>
+    <a href="{{ path('app_check_requirements_work_index') }}">Вернуться к списку</a>
 
-    <a href="{{ path('app_check_requirements_work_edit', {'id': check_requirements_work.id}) }}">edit</a>
+    <a href="{{ path('app_check_requirements_work_edit', {'id': check_requirements_work.id}) }}">Редактировать</a>
 
     {{ include('check_requirements_work/_delete_form.html.twig') }}
 {% endblock %}

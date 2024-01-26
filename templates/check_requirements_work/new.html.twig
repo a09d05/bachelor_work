@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New CheckRequirementsWork{% endblock %}
+{% block title %}Проверки на предмет соблюдения ОТ{% endblock %}
 
 {% block body %}
-    <h1>Create new CheckRequirementsWork</h1>
+    <h1>Создать запись о проверке</h1>
 
     {{ include('check_requirements_work/_form.html.twig') }}
 
-    <a href="{{ path('app_check_requirements_work_index') }}">back to list</a>
+    <a href="{{ path('app_check_requirements_work_index') }}">Вернуться к списку</a>
 {% endblock %}
