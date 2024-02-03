@@ -1,0 +1,15 @@
+login:
+    path: ../login
+    controller: App\Controller\SecurityController
+
+home_page:
+    path: ../home_page
+    controller: App\Controller\HomePageController
+
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+ 

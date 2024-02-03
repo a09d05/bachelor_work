@@ -44,7 +44,7 @@ class WordController extends AbstractController
         $fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER, 'cellSpacing' => 50];
         $fancyTableFirstRowStyle = ['borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF'];
         $fancyTableCellStyle = ['valign' => 'center'];
-        $fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => \PhpOffice\PhpWord\Style\Cell::TEXT_DIR_TBRL];
+        #$fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => \PhpOffice\PhpWord\Style\Cell::TEXT_DIR_TBRL];
         $fancyTableFontStyle = ['bold' => true];
         
         $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
@@ -75,8 +75,6 @@ class WordController extends AbstractController
 
         if($result = $conn->query($sql))
         {
-            $rowsCount = $result->num_rows;
-            #for ($i = 1; $i <= $rowsCount; ++$i)
             foreach($result as $row)
             {
                 $table->addRow();
@@ -86,16 +84,6 @@ class WordController extends AbstractController
                 $table->addCell(1000)->addText("{$row["Факт. дата"]}");
                 $table->addCell(1000)->addText("{$row["Результат"]}");
                 $table->addCell(1000)->addText("{$row["Комментарий"]}");
-
-                /*
-                $table->addRow();
-                $table->addCell(1000)->addText("Cell {$i}");
-                $table->addCell(1000)->addText("Cell {$i}");
-                $table->addCell(1000)->addText("Cell {$i}");
-                $table->addCell(1000)->addText("Cell {$i}");
-                $table->addCell(1000)->addText("Cell {$i}");
-                $table->addCell(1000)->addText("Cell {$i}");
-                */
             }
         }            
 
