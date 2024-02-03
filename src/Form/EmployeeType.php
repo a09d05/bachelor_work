@@ -3,8 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Employee;
-use App\Entity\depts;
-use App\Entity\employeePosts;
+use App\Entity\Depts;
+use App\Entity\EmployeePosts;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -58,4 +58,11 @@ class EmployeeType extends AbstractType
             'data_class' => Employee::class,
         ]);
     }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+{
+    $resolver->setDefaults(array(
+        'data_class' => 'App\Entity\Employee',
+    ));
+}
 }

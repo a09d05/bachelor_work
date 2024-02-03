@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Employee;
 use App\Entity\CheckRequirementsWork;
 use App\Form\CheckRequirementsWorkType;
 use App\Repository\CheckRequirementsWorkRepository;
@@ -48,6 +49,14 @@ class CheckRequirementsWorkController extends AbstractController
         return $this->render('check_requirements_work/show.html.twig', [
             'check_requirements_work' => $checkRequirementsWork,
         ]);
+    }
+
+    public function showEmployee(ManagerRegistry $doctrine, int $id): Response
+    {
+        $employee = $doctrine->getRepository(Employee::class)->find($id);
+        $surname = $employee->getEmployee()->getSurname();
+
+        return $surname; 
     }
 
     #[Route('/{id}/edit', name: 'app_check_requirements_work_edit', methods: ['GET', 'POST'])]
